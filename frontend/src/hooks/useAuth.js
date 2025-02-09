@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { BASE_URL } from '../.env';
 import { useAuthContext } from '../context/AuthContext'; // Import the AuthContext
 
 const useAuth = () => {
@@ -21,7 +22,7 @@ const useAuth = () => {
     // Function to regenerate the access token using the refresh token
     const regenerateAccessToken = async (refreshToken) => {
       try {
-        const response = await axios.post('http://127.0.0.1:8000/api/token/refresh/', {
+        const response = await axios.post(`${BASE_URL}/api/token/refresh/`, {
           refresh: refreshToken,
         });
 
